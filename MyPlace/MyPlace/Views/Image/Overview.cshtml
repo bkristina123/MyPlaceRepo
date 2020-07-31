@@ -1,0 +1,42 @@
+﻿
+@model List<MyPlace.ViewModels.UserImageViewModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+    <div style="margin:50px">
+        <form class="form-inline my-2 my-lg-0" method="get">
+            <div class="form-group">
+                <div class="input-group">
+                    <input name="Username" value="" id="username" class="form-control text-dark" placeholder="Search" />
+                    <span class="input-group-btn">
+                        <button type="submit" class="btn btn-warning" value="Search">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                    <div class="card">
+                        <img src="@item.ImageUrl" alt="Alternate Text" />
+                        <div class="card-body">
+                            <p class="card-text">@item.Username</p>
+                            <p class="card-text">@item.DateCreated</p>
+                        </div>
+                    </div>
+             </div>
+                
+         }
+    </div>
+
+
+

@@ -1,0 +1,56 @@
+﻿
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+
+@model List<MyPlace.ViewModels.UserImageViewModel>
+
+@{
+    Layout = "_Layout";
+    ViewData["Title"] = "Modify Overview";
+}
+
+
+<div class="container">
+    <h2 style="margin:50px">Modify Images</h2>
+    <table class="table">
+        <thead>
+        <th>
+            Image URL
+        </th>
+        <th>
+            Date Posted
+        </th>
+        <th>
+            isPrivate
+        </th>
+        </thead>
+
+        @foreach (var image in Model)
+        {
+    <tr>
+        <td class="text-warning">
+            <img style=" width="70px"; height="70px" src="@image.ImageUrl" />
+        </td>
+        <td class="text-warning">
+            @image.DateCreated
+        </td>
+        <td class="text-warning">
+            <input type="checkbox"/>
+        </td>
+        <td>
+            <a class="btn btn-warning" asp-controller="Image" asp-action="ModifyImage" asp-route-id="@image.Id">
+                <i class="fa fa-edit"></i>
+            </a>
+        </td>
+        <td>
+            <a class="btn btn-warning" asp-controller="Image" asp-action="Delete" asp-route-id="@image.Id" onclick="return confirm('Are you sure you want to delete this movie?')">
+                <i class="fa fa-trash"></i>
+            </a>
+        </td>
+    </tr>
+        }
+    </table>
+
+    <a asp-controller="Image" asp-action="Create" class="btn btn-warning">Add Image</a>
+
+</div>
